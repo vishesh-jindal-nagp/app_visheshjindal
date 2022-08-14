@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN apt-get update
 
-RUN npn install
+RUN npm install
 
 COPY . .
 
