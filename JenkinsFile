@@ -1,0 +1,37 @@
+pipeline{
+    agent any
+    
+    tools{
+        nodejs 'NodeJS'
+        git 'github'
+        dockerTool 'Docker'
+    }
+    
+    stages{
+        stage('Build'){
+            steps{
+                git branch: 'main', url: 'https://github.com/vishesh-jindal-nagp/app_visheshjindal.git'
+                sh 'npm install'
+                sh 'pwd'
+            }
+        }
+        stage('SonarqubeAnalysis'){
+            steps{
+                sh 'echo Sonar analysis step'
+                sh 'echo $USER'
+            }
+        }
+        stage('Kubernetes Deployment'){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'Docker-Hub', passwordVariable: 'pass', usernameVariable: 'username')]) {
+                        sh 'docker login -u $username -p $pass'
+                        sh 'docker build -t visheshjindal/master:${BUILD_NUMBER} --no-cache .'
+                        sh 'docker push visheshjindal/master:${BUILD_NUMBER}'
+                    }
+                        
+                }
+            }
+        }
+    }
+}
