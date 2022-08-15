@@ -17,7 +17,18 @@ pipeline{
                 sh 'pwd'
             }
         }
+        stage('Unit Testing') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'npm test'
+            }
+        }
         stage('SonarqubeAnalysis'){
+            when {
+                branch 'develop'
+            }
             steps{
                 withSonarQubeEnv('Test_Sonar'){
                     sh "${scannerHome}/sonar-scanner"
