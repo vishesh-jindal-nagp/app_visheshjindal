@@ -1,6 +1,8 @@
 pipeline{
     agent any
-    
+    environment{
+        scannerHome = tool 'SonarQubeScanner'
+    }
     tools{
         nodejs 'NodeJS'
         git 'github'
@@ -17,8 +19,9 @@ pipeline{
         }
         stage('SonarqubeAnalysis'){
             steps{
-                sh 'echo Sonar analysis step'
-                sh 'echo $USER'
+                withSonarQubeEnv('Test_Sonar'){
+                    sh "${scannerHome}/sonar-scanner"
+                }
             }
         }
         stage('Kubernetes Deployment'){
