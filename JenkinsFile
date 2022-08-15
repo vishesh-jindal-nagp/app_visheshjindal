@@ -19,7 +19,7 @@ pipeline{
         }
         stage('Unit Testing') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 sh 'npm test'
