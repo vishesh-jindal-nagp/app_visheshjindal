@@ -40,8 +40,8 @@ pipeline{
                 script{
                     withCredentials([usernamePassword(credentialsId: 'Docker-Hub', passwordVariable: 'pass', usernameVariable: 'username')]) {
                         sh 'docker login -u $username -p $pass'
-                        sh 'docker build -t ${user}/i-${user}-'+ env.BRANCH_NAME +':latest --no-cache .'
-                        sh 'docker push ${user}/i-${user}-'+ env.BRANCH_NAME +':latest'
+                        sh 'docker build -t $user/i-$user-'+ env.BRANCH_NAME +':latest --no-cache .'
+                        sh 'docker push $user/i-$user-'+ env.BRANCH_NAME +':latest'
                     }                        
                 }
             }
