@@ -19,7 +19,7 @@ pipeline{
         }
         stage('Unit Testing') {
             when {
-                branch 'develop'
+                branch 'main'
             }
             steps {
                 sh 'npm test'
@@ -43,8 +43,8 @@ pipeline{
                     }
                     sh "docker build -t ${user}/i-${user}-"+ env.BRANCH_NAME +":latest --no-cache ."
                     sh "docker push ${user}/i-${user}-"+ env.BRANCH_NAME +":latest" 
-                    sh "kubectl apply -f deployments.yaml"      
-                    sh "kubectl apply -f services.yaml"
+                    sh "kubectl apply -f ./manifests/deployments.yaml"      
+                    sh "kubectl apply -f ./manifests/services.yaml"
                 }
             }
         }
