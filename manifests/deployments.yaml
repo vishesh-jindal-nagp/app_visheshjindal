@@ -15,15 +15,15 @@ spec:
         app: nagp-nodejs
     spec:
       containers:
-      - name: nagp-nodejs
-        image: visheshjindal/i-visheshjindal-main:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3011
-      envFrom:
-        - configMapRef:
-          name: special-config
-
+        - name: nagp-nodejs
+          image: visheshjindal/i-visheshjindal-main:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3011
+          envFrom:
+            - configMapRef:
+                name: special-config
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
