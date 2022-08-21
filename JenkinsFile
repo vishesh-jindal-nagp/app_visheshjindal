@@ -42,7 +42,9 @@ pipeline{
                         sh 'docker login -u $username -p $pass'                        
                     }
                     sh "docker build -t ${user}/i-${user}-"+ env.BRANCH_NAME +":latest --no-cache ."
-                    sh "docker push ${user}/i-${user}-"+ env.BRANCH_NAME +":latest"       
+                    sh "docker push ${user}/i-${user}-"+ env.BRANCH_NAME +":latest"     
+                    sh "kubectl apply -f deployments.yaml"      
+                    sh "kubectl apply -f services.yaml"  
                 }
             }
         }
