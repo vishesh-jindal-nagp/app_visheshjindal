@@ -8,6 +8,16 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>main</p>
+    <table>
+      <tr>
+        <td>VARTYPE</td>
+        <td><%- env['VARTYPE'] %></td>
+      </tr>
+      <tr>
+        <td>TYPE</td>
+        <td><%- env['TYPE'] %></td>
+      </tr>
+    </table>
   </body>
   <script>
     console.table(<%- JSON.stringify(env) %>)
