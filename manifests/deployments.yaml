@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nagp-nodejs
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: nagp-nodejs
@@ -15,8 +15,30 @@ spec:
         app: nagp-nodejs
     spec:
       containers:
-      - name: nagp-nodejs
-        image: visheshjindal/i-visheshjindal-develop:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3010
+        - name: nagp-nodejs
+          image: visheshjindal/i-visheshjindal-develop:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3010  
+          envFrom:
+            - configMapRef:
+                name: special-config
+            - secretRef:
+                name: special-secret
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: special-config  
+data:
+  VARTYPECM: CONFIGMAP
+  TYPECM: NODE-JS
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: special-secret
+data:
+  VARTYPE: U0VDUkVU
+  TYPE: U2VjcmV0VGV4dA==
+              

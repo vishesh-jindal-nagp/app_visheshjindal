@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <script src='/javascripts/bootstrap.bundle.min.js'></script>
   </head>
   <body>
+    <div class="container">
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>develop</p>
+    <br />
+    <h2>Welcome to NAGP Dev-Ops and Kubernetes demo</h2>
+    <br />
+    <h3>This deployment is from <b>develop</b> branch </h3>
+    <br />
+    <h3>Below are the configmap and secret variables from kubernetes</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Variable type</th>
+          <th scope="col">Variable Value</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>        
+        <td><%- env['VARTYPE'] %></td>
+        <td><%- env['TYPE'] %></td>
+      </tr>      
+      <tr>
+        <th scope="row">2</th>        
+        <td><%- env['VARTYPECM'] %></td>
+        <td><%- env['TYPECM'] %></td>
+      </tr>      
+      </tbody>
+    </table>
+  </div>
   </body>
   <script>
     console.table(<%- JSON.stringify(env) %>)
