@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagp-nodejs-develop
+  labels:
+    app: nagp-nodejs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nagp-nodejs
+  template:
+    metadata:
+      labels:
+        app: nagp-nodejs
+    spec:
+      containers:
+      - name: nagp-nodejs
+        image: visheshjindal/i-visheshjindal-develop:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3010
