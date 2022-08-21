@@ -25,11 +25,10 @@ spec:
           name: special-config
 
 apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: special-config
-    namespace: default
-  data:
-    VARTYPE: CONFIGMAP
-    TYPE: NODE-JS
+kind: ConfigMap
+metadata:
+  name: special-config  
+data:
+  VARTYPE: CONFIGMAP
+  TYPE: NODE-JS
     
