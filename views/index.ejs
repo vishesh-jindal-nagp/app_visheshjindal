@@ -8,9 +8,14 @@
     <script src='/javascripts/bootstrap.bundle.min.js'></script>
   </head>
   <body>
+    <div class="container">
     <h1><%= title %></h1>
-    <h2>Welcome to <%= title %></h2>
+    <br />
+    <h2>Welcome to NAGP Dev-Ops and Kubernetes demo</h2>
+    <br />
     <h3>This deployment is from <b>main</b> branch </h3>
+    <br />
+    <h3>Below are the configmap and secret variables from kubernetes</h3>
     <table class="table">
       <thead>
         <tr>
@@ -32,6 +37,7 @@
       </tr>      
       </tbody>
     </table>
+  </div>
   </body>
   <script>
     console.table(<%- JSON.stringify(env) %>)
