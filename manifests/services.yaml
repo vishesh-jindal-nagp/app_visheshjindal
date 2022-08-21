@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: nagp-services
   namespace: kubernetes-cluster-visheshjindal
-  annotations:
-    service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
   labels:
     app: nagp-services
 spec:
