@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         scannerHome = tool 'SonarQubeScanner'
-        user = "visheshjindal"
+        user = 'visheshjindal'
     }
     tools{
         nodejs 'NodeJS'
