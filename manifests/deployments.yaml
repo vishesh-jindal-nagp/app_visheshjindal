@@ -23,11 +23,21 @@ spec:
           envFrom:
             - configMapRef:
                 name: special-config
+            - secretRef:
+                name: special-secret
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: special-config  
+data:
+  VARTYPE: CONFIGMAP
+  TYPE: NODE-JS
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: special-secret
 data:
   VARTYPE: CONFIGMAP
   TYPE: NODE-JS
