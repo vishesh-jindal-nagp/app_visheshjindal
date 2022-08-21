@@ -1,6 +1,6 @@
 FROM node:16.16.0-bullseye-slim
 
-ENV PORT=3010
+ENV PORT=3011
 
 WORKDIR /app
 
@@ -12,6 +12,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3010
+EXPOSE 3011
 
 CMD ["npm", "start"]
