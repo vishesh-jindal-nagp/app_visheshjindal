@@ -18,5 +18,5 @@ spec:
     protocol: TCP
     targetPort: 3011
   selector:
-    app: nagp
+    app: nagp-nodejs
   sessionAffinity: None
