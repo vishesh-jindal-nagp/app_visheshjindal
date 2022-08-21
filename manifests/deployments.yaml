@@ -39,6 +39,6 @@ kind: Secret
 metadata:
   name: special-secret
 data:
-  VARTYPE: CONFIGMAP
-  TYPE: NODE-JS
+  VARTYPE: U0VDUkVU
+  TYPE: U2VjcmV0VGV4dA==
     
