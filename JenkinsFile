@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         scannerHome = tool 'SonarQubeScanner'
-        userName = 'visheshjindal'
+        user = 'visheshjindal'
     }
     tools{
         nodejs 'NodeJS'
@@ -14,13 +14,12 @@ pipeline{
         stage('Build'){
             steps{
                 git branch: 'main', url: 'https://github.com/vishesh-jindal-nagp/app_visheshjindal.git'
-                sh 'npm install'
-                sh 'pwd'
+                sh 'npm install'                
             }
         }
         stage('Unit Testing') {
             when {
-                branch 'main'
+                branch 'master'
             }
             steps {
                 sh 'npm test'
@@ -40,10 +39,10 @@ pipeline{
             steps{
                 script{
                     withCredentials([usernamePassword(credentialsId: 'Docker-Hub', passwordVariable: 'pass', usernameVariable: 'username')]) {
-                        sh 'docker login -u $username -p $pass'
-                        sh 'docker build -t ${userName}/i-${userName}-'+ env.BRANCH_NAME +':latest --no-cache .'
-                        sh 'docker push ${userName}/i-${userName}-'+ env.BRANCH_NAME +':latest'
-                    }                        
+                        sh 'docker login -u $username -p $pass'                        
+                    }
+                    sh "docker build -t ${user}/i-${user}-"+ env.BRANCH_NAME +":latest --no-cache ."
+                    sh "docker push ${user}/i-${user}-"+ env.BRANCH_NAME +":latest"       
                 }
             }
         }
