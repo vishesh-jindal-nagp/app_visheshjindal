@@ -5,7 +5,7 @@ pipeline{
         user = 'visheshjindal'
     }
     tools{
-        nodejs 'NodeJS'
+        nodejs 'nodejs'
         git 'github'
         dockerTool 'Docker'
     }
@@ -19,7 +19,7 @@ pipeline{
         }
         stage('Unit Testing') {
             when {
-                branch 'master'
+                branch 'develop'
             }
             steps {
                 sh 'npm test'
