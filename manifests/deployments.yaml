@@ -31,8 +31,8 @@ kind: ConfigMap
 metadata:
   name: special-config  
 data:
-  VARTYPE: CONFIGMAP
-  TYPE: NODE-JS
+  VARTYPECM: CONFIGMAP
+  TYPECM: NODE-JS
 ---
 apiVersion: v1
 kind: Secret
